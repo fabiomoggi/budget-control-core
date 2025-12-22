@@ -23,7 +23,7 @@
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "tsc -p tsconfig.build.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm run build && npm version patch && npm publish --registry=https://npm.pkg.github.com"
+    "release": "npm run build && npm version patch && npm publish --registry=https://npm.pkg.github.com"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
