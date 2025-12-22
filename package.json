@@ -1,6 +1,6 @@
 {
   "name": "@fabiomoggi/budget-control-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "type": "module",
   "private": false,
@@ -21,7 +21,7 @@
     "build:watch": "tsc -p tsconfig.build.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-   "publishConfig": {
+  "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "keywords": [],
