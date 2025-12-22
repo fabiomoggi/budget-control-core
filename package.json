@@ -1,6 +1,9 @@
 {
   "name": "@fabiomoggi/budget-control-core",
   "version": "1.0.21",
+  "engines": {
+    "node": ">=20 <23"
+  },
   "description": "",
   "type": "module",
   "private": false,
