@@ -2,7 +2,7 @@
   "name": "@fabiomoggi/budget-control-core",
   "version": "1.0.32",
   "engines": {
-    "node": ">=20 <23"
+    "node": ">=20"
   },
   "description": "",
   "type": "module",
@@ -15,14 +15,14 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     }
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "tsc -p tsconfig.build.json --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
     "release": "npm run build && npm version patch && npm publish --registry=https://npm.pkg.github.com"
   },
   "publishConfig": {
@@ -32,6 +32,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }

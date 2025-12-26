@@ -1,1 +1,1 @@
-export * from "./domain/test-domain.js"
+export * from "./domain/user/entities/User.js"
