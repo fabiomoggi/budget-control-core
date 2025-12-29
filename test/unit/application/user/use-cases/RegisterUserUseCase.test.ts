@@ -6,7 +6,7 @@ import type { AuthServicePort } from
   "../../../../../dist/application/user/ports/outbound/AuthServicePort.js";
 
 import type { AuthRepositoryPort } from
-  "../../../../../dist/application/user/ports/outbound/AuthRepositoryPort.js";
+  "../../../../../dist/application/user/ports/outbound/UserProfileRepositoryPort.js";
 
 import type {
   RegisterUserInputDTO,

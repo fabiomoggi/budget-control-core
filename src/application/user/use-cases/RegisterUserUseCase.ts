@@ -1,5 +1,5 @@
 import type { AuthServicePort } from "../../user/ports/outbound/AuthServicePort.js";
-import type { AuthRepositoryPort } from "../../user/ports/outbound/AuthRepositoryPort.js";
+import type { AuthRepositoryPort } from "../ports/outbound/UserProfileRepositoryPort.js";
 import type {
   RegisterUserInputDTO,
   RegisterUserOutputDTO,
