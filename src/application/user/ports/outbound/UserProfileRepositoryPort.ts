@@ -1,5 +1,5 @@
 import type { SaveUserProfileDTO } from "../../dtos/SaveUserProfileDTO.js";
 
-export interface AuthRepositoryPort {
+export interface UserProfileRepositoryPort {
   saveUserProfile(profile: SaveUserProfileDTO): Promise<void>;
 }

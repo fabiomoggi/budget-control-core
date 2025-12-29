@@ -1,5 +1,5 @@
 import type { AuthServicePort } from "../../user/ports/outbound/AuthServicePort.js";
-import type { AuthRepositoryPort } from "../ports/outbound/UserProfileRepositoryPort.js";
+import type { UserProfileRepositoryPort } from "../ports/outbound/UserProfileRepositoryPort.js";
 import type {
   RegisterUserInputDTO,
   RegisterUserOutputDTO,
@@ -9,7 +9,7 @@ import type { SaveUserProfileDTO } from "../dtos/SaveUserProfileDTO.js";
 export class RegisterUserUseCase {
   constructor(
     private readonly authService: AuthServicePort,
-    private readonly authRepository: AuthRepositoryPort
+    private readonly userProfileRepository: UserProfileRepositoryPort
   ) {}
 
   async execute(input: RegisterUserInputDTO): Promise<RegisterUserOutputDTO> {
@@ -21,7 +21,7 @@ export class RegisterUserUseCase {
       email: input.email,
     };
 
-    await this.authRepository.saveUserProfile(profile);
+    await this.userProfileRepository.saveUserProfile(profile);
 
     return { userId };
   }
