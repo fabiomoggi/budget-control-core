@@ -5,7 +5,7 @@ import { RegisterUserUseCase } from
 import type { AuthServicePort } from
   "../../../../../dist/application/user/ports/outbound/AuthServicePort.js";
 
-import type { AuthRepositoryPort } from
+import type { UserProfileRepositoryPort } from
   "../../../../../dist/application/user/ports/outbound/UserProfileRepositoryPort.js";
 
 import type {
@@ -39,7 +39,7 @@ class InMemoryAuthService implements AuthServicePort {
   }
 }
 
-class InMemoryAuthRepository implements AuthRepositoryPort {
+class InMemoryAuthRepository implements UserProfileRepositoryPort {
   public savedProfile?: SaveUserProfileDTO;
   public shouldFail = false;
 
