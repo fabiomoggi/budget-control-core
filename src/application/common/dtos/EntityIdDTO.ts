@@ -1,0 +1,1 @@
+export type EntityIdDTO = string; // UUIDv4 string

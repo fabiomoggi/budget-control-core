@@ -12,10 +12,19 @@
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./common": {
+      "types": "./dist/application/common/index.d.ts",
+      "default": "./dist/application/common/index.js"
+    },
+    "./user": {
+      "types": "./dist/application/user/index.d.ts",
+      "default": "./dist/application/user/index.js"
     }
   },
   "scripts": {
