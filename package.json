@@ -24,6 +24,10 @@
     "./user": {
       "types": "./dist/application/user/index.d.ts",
       "default": "./dist/application/user/index.js"
+    },
+    "./transaction": {
+      "types": "./dist/application/transaction/index.d.ts",
+      "default": "./dist/application/transaction/index.js"
     }
   },
   "scripts": {
