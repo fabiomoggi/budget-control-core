@@ -113,8 +113,6 @@ NEWFILEUID:NONE
     const parser = new NubankCreditCardStatementParser();
     const result = parser.parseOfx({ file: Buffer.from(ofx, "utf-8") });
 
-    console.log("Parsed transactions:", result);
-
     // Count: 8 STMTTRN blocks
     expect(result).toHaveLength(8);
 
