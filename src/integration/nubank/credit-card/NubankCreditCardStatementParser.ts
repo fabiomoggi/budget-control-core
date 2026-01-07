@@ -4,17 +4,17 @@ export class NubankCreditCardStatementParser {
   /**
    * Parse Nubank credit-card OFX content into normalized transactions.
    *
-   * This parser is bank-specific and format-specific (OFX).
-   * It does NOT do idempotency, fingerprinting, merging, or persistence.
+   * Bank-specific + format-specific (OFX).
+   * Does NOT do idempotency, fingerprinting, merging, or persistence.
    */
   parseOfx(input: { file: Buffer; fileName?: string }): NormalizedTransactionDTO[] {
     const text = input.file.toString("utf-8");
 
     const currency = this.extractCurdef(text) ?? "BRL";
-
     const blocks = this.extractStmtTrnBlocks(text);
 
     const txs: NormalizedTransactionDTO[] = [];
+
     for (const block of blocks) {
       const dateRaw = this.extractTagValue(block, "DTPOSTED");
       const amountRaw = this.extractTagValue(block, "TRNAMT");
@@ -30,9 +30,12 @@ export class NubankCreditCardStatementParser {
       const date = this.normalizeOfxDate(dateRaw);
       const amount = this.normalizeAmount(amountRaw);
 
+      // Nubank usually provides MEMO. Keep NAME as fallback.
       const merchantName = (memo ?? name ?? "").trim();
+
+      // merchantName is required in NormalizedTransactionDTO; skip if not present.
       if (!merchantName) {
-        // Still allow, but you might prefer to set a fallback
+        continue;
       }
 
       txs.push({
@@ -53,8 +56,9 @@ export class NubankCreditCardStatementParser {
   }
 
   /**
-   * OFX is SGML-like; tags often appear as <TAG>value without a closing tag.
-   * This reads the first occurrence of <TAG>... up to next tag or line break.
+   * OFX is SGML-like; tags may appear as <TAG>value (no closing tag),
+   * or as <TAG>value</TAG>. This reads the first occurrence of <TAG>... up to
+   * the next tag or line break.
    */
   private extractTagValue(source: string, tag: string): string | undefined {
     const re = new RegExp(`<${tag}>([^<\\r\\n]*)`, "i");
@@ -63,8 +67,8 @@ export class NubankCreditCardStatementParser {
   }
 
   /**
-   * Extract <STMTTRN> blocks. Many OFX files contain <STMTTRN>...</STMTTRN>,
-   * but some omit closing tags. This handles both by splitting.
+   * Extract <STMTTRN> blocks. Many OFX files contain <STMTTRN>...</STMTTRN>.
+   * Some omit closing tags. This handles both by splitting.
    */
   private extractStmtTrnBlocks(text: string): string[] {
     const parts = text.split(/<STMTTRN>/i);
