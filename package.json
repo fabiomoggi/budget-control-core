@@ -28,6 +28,10 @@
     "./transaction": {
       "types": "./dist/application/transaction/index.d.ts",
       "default": "./dist/application/transaction/index.js"
+    },
+    "./integration/nubank": {
+      "types": "./dist/integration/nubank/index.d.ts",
+      "default": "./dist/integration/nubank/index.js"
     }
   },
   "scripts": {
