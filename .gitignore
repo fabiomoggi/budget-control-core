@@ -1,6 +1,10 @@
 # Build output
 dist
 
+# Jest test coverage reports
+coverage/
+
+
 # Logs
 logs
 *.log
