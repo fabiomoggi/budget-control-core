@@ -7,7 +7,7 @@ import type {
 } from "../../../../../dist/application/transaction/dtos/ImportTransactionsDTO.js";
 
 import type { TransactionFingerprintGeneratorPort } from "../../../../../dist/application/transaction/ports/TransactionFingerprintGeneratorPort.js";
-import type { TransactionImportRepositoryPort } from "../../../../../dist/application/transaction/ports/TransactionImportRepositoryPort.js";
+import type { TransactionImportRepositoryPort } from "../../../../../dist/application/transaction/ports/ImportTransactionsRepositoryPort.js";
 
 import type { TransactionFingerprintCanonicalizer } from "../../../../../dist/application/transaction/services/TransactionFingerprintCanonicalizer.js";
 import type { NormalizedTransactionDTO } from "../../../../../dist/application/transaction/dtos/NormalizedTransactionDTO.js";

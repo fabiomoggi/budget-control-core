@@ -1,6 +1,6 @@
 export * from "./contracts/NormalizedTransaction.js"
 export * from "./commands/ImportTransactionsCommand.js"
 export * from "./results/ImportTransactionsResult.js"
-export * from "./ports/TransactionImportRepositoryPort.js"
+export * from "./ports/ImportTransactionsRepositoryPort.js"
 export * from "./ports/TransactionFingerprintGeneratorPort.js"
 export * from "./use-cases/ImportTransactionsUseCase.js"

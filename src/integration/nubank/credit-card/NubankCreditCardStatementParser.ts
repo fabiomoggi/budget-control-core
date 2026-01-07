@@ -1,4 +1,4 @@
-import type { NormalizedTransactionDTO } from "../../../application/transaction/dtos/NormalizedTransactionDTO.js";
+import type { NormalizedTransaction } from "../../../application/transaction/contracts/NormalizedTransaction.js"
 
 export class NubankCreditCardStatementParser {
   /**
@@ -7,13 +7,13 @@ export class NubankCreditCardStatementParser {
    * Bank-specific + format-specific (OFX).
    * Does NOT do idempotency, fingerprinting, merging, or persistence.
    */
-  parseOfx(input: { file: Buffer; fileName?: string }): NormalizedTransactionDTO[] {
+  parseOfx(input: { file: Buffer; fileName?: string }): NormalizedTransaction[] {
     const text = input.file.toString("utf-8");
 
     const currency = this.extractCurdef(text) ?? "BRL";
     const blocks = this.extractStmtTrnBlocks(text);
 
-    const txs: NormalizedTransactionDTO[] = [];
+    const txs: NormalizedTransaction[] = [];
 
     for (const block of blocks) {
       const dateRaw = this.extractTagValue(block, "DTPOSTED");
